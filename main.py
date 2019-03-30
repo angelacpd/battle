@@ -44,7 +44,7 @@ while running:
             print(Bcolors.FAIL + "\nNot enough MP\n" + Bcolors.ENDC)
             continue
 
-        player.reduce_mp(cost)
+        player.reduce_mp(spell.cost)
         enemy.take_damage(magic_dmg)
         print(Bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg), "points of damage" + Bcolors.ENDC)
 
