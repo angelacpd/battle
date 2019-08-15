@@ -1,1 +1,2 @@
-*.pyc
+.idea/**/workspace.xml
+classes/__pycache__/
