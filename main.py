@@ -38,7 +38,7 @@ print(Bcolors.FAIL + Bcolors.BOLD + "AN ENEMY ATTACKS" + Bcolors.ENDC)
 while running:
     print("=================")
     player.choose_action()
-    choice = input("Choose action:")
+    choice = input("Choose action: ")
     index = int(choice) - 1
 
     if index == 0:
@@ -51,12 +51,6 @@ while running:
 
         if magic_choice == -1:
             continue
-
-        item = player.items[item_choice]
-
-        if item.type == "potion":
-            player.heal(item.prop)
-            print(Bcolors.OKGREEN + "\n" + item.name + " heals for", str(item.prop), "HP" + Bcolors.ENDC)
 
         spell = player.magic[magic_choice]
         magic_dmg = spell.generate_damage()
@@ -74,12 +68,20 @@ while running:
         elif spell.type == "black":
             enemy.take_damage(magic_dmg)
             print(Bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg), "points of damage" + Bcolors.ENDC)
+
     elif index == 2:
         player.choose_item()
         item_choice = int(input("Choose item: ")) - 1
 
         if item_choice == -1:
             continue
+
+        item = player.items[item_choice]
+
+        if item.type == "potion":
+            player.heal(item.prop)
+            print(Bcolors.OKGREEN + "\n" + item.name + " heals for", str(item.prop), "HP" + Bcolors.ENDC)
+
 
     enemy_choice = 1
 
