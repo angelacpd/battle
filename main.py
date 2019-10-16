@@ -2,6 +2,25 @@ from classes.game import Person, Bcolors
 from classes.magic import Spell
 from classes.inventory import Item
 
+print("\n\n")
+print("NAME                  HP                                  MP")
+print("                      _________________________           __________ ")
+print(Bcolors.BOLD + "Valos:       " + " 10/460 |" +
+      Bcolors.OKGREEN + "███████              " + Bcolors.ENDC + Bcolors.BOLD +
+      "|   65/65 |" + Bcolors.OKBLUE + "███████" + Bcolors.ENDC + "|")
+
+print("                      _________________________           __________ ")
+print(Bcolors.BOLD + "Valos:       " + " 10/460 |" +
+      Bcolors.OKGREEN + "███████              " + Bcolors.ENDC + Bcolors.BOLD +
+      "|   65/65 |" + Bcolors.OKBLUE + "███████" + Bcolors.ENDC + "|")
+
+print("                      _________________________           __________ ")
+print(Bcolors.BOLD + "Valos:       " + " 10/460 |" +
+      Bcolors.OKGREEN + "███████              " + Bcolors.ENDC + Bcolors.BOLD +
+      "|   65/65 |" + Bcolors.OKBLUE + "███████" + Bcolors.ENDC + "|")
+
+print("\n\n")
+
 
 # Create Black Magic
 fire = Spell("Fire", 10, 100, "black")
@@ -27,7 +46,7 @@ grenade = Item("Granade", "attack", "Deals 500 damage", 500)
 player_spells = [fire, thunder, blizzard, meteor, cure, cura]
 player_items = [{"item": potion, "quantity": 15}, {"item": hipotion, "quantity": 5},
                 {"item": superpotion, "quantity": 5}, {"item": elixer, "quantity": 5},
-                {"item": hielixer, "quantity": 2},{"item": grenade, "quantity": 5}]
+                {"item": hielixer, "quantity": 2}, {"item": grenade, "quantity": 5}]
 # Instantiate People
 player = Person(460, 65, 60, 34, player_spells, player_items)
 enemy = Person(1200, 65, 45, 25, [], [])
