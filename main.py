@@ -1,6 +1,7 @@
 from classes.game import Person, Bcolors
 from classes.magic import Spell
 from classes.inventory import Item
+import random
 
 # Create Black Magic
 fire = Spell("Fire", 25, 600, "black")
@@ -43,11 +44,13 @@ print(Bcolors.FAIL + Bcolors.BOLD + "AN ENEMY ATTACKS" + Bcolors.ENDC)
 while running:
     print("==============================")
     print("\n\n")
-    print("NAME                    HP                                  MP")
+    print("NAME                    HP                                      MP")
     for player in players:
         player.get_stats()
 
     print("\n")
+
+    enemy.get_enemy_stats()
 
     for player in players:
 
@@ -102,23 +105,30 @@ while running:
                 player.heal(item.prop)
                 print(Bcolors.OKGREEN + "\n" + item.name + " heals for", str(item.prop), "HP" + Bcolors.ENDC)
             elif item.type == "elixer":
-                player.hp = player.maxhp
-                player.mp = player.maxmp
+
+                if item.name == "MegaElixer":
+                    for i in players:
+                        i.hp = i.maxhp
+                        i.mp = i.maxmp
+                else:
+                    player.hp = player.maxhp
+                    player.mp = player.maxmp
                 print(Bcolors.OKGREEN + "\n" + item.name + "fully restores HP/MP" + Bcolors.ENDC)
             elif item.type == "attack":
                 enemy.take_damage(item.prop)
                 print(Bcolors.OKGREEN + "\n" + item.name + " deals", str(item.prop), "points of damage" + Bcolors.ENDC)
 
     enemy_choice = 1
-
+    target = random.randrange(0, 3)
     enemy_dmg = enemy.generate_damage()
-    player1.take_damage(enemy_dmg)
+    players[target].take_damage(enemy_dmg)
     print("Enemy attacks for", enemy_dmg, "Player HP", player.get_hp())
 
+    '''
     print("----------------------------")
     print("Enemy HP:", Bcolors.FAIL + str(enemy.get_hp()) + "/" + str(enemy.get_max_hp()) + Bcolors.ENDC + "\n")
 
-    '''
+    
     print("Your HP:", Bcolors.OKGREEN + str(player.get_hp()) + "/" + str(player.get_max_hp()) + Bcolors.ENDC)
     print("Your MP:", Bcolors.OKBLUE + str(player.get_mp()) + "/" + str(player.get_max_mp()) + Bcolors.ENDC + "\n")
     '''

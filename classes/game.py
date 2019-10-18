@@ -87,6 +87,35 @@ class Person:
                   str(item["quantity"]) + ")")
             i += 1
 
+    def get_enemy_stats(self):
+        hp_bar = ""
+        bar_ticks = (self.hp / self.maxhp) * 100 / 2
+
+        while bar_ticks > 0:
+            hp_bar += "█"  # "■"  # "≡"
+            bar_ticks -= 1
+
+        while len(hp_bar) < 50:
+            hp_bar += " "
+
+        hp_string = str(self.hp) + "/" + str(self.maxhp)
+        current_hp = ""
+
+        if len(hp_string) < 11:
+            decreased = 11 - len(hp_string)
+
+            while decreased > 0:
+                current_hp += " "
+                decreased -= 1
+
+            current_hp += hp_string
+        else:
+            current_hp = hp_string
+
+        print("                        ______________________________________________________ ")
+        print(Bcolors.BOLD + str(self.name) + Bcolors.ENDC + "     " +
+              current_hp + " |" + Bcolors.FAIL + hp_bar + Bcolors.ENDC + "|")
+
     def get_stats(self):
         hp_bar = ""
         bar_ticks = (self.hp / self.maxhp) * 100 / 4
@@ -95,14 +124,14 @@ class Person:
         mp_ticks = (self.mp / self.maxmp) * 100 / 10
 
         while bar_ticks > 0:
-            hp_bar += "█"
+            hp_bar += "█"  # "■"  # "≡"
             bar_ticks -= 1
 
         while len(hp_bar) < 25:
             hp_bar += " "
 
         while mp_ticks > 0:
-            mp_bar += "█"
+            mp_bar += "█"  # "■"  # "≡"
             mp_ticks -= 1
 
         while len(mp_bar) < 10:
@@ -136,7 +165,7 @@ class Person:
         else:
             current_mp = mp_string
 
-        print("                        _________________________           __________ ")
-        print(Bcolors.BOLD + str(self.name) + "       " +
+        print("                        ___________________________             ___________ ")
+        print(Bcolors.BOLD + str(self.name) + Bcolors.ENDC + "       " +
               current_hp + " |" + Bcolors.OKGREEN + hp_bar + Bcolors.ENDC + "|   " +
               current_mp + " |" + Bcolors.OKBLUE + mp_bar + Bcolors.ENDC + "|")
