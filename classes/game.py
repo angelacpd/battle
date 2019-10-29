@@ -88,12 +88,13 @@ class Person:
             i += 1
 
     def choose_target(self, enemies):
-        i = 0
+        i = 1
 
         print("\n" + Bcolors.FAIL + Bcolors.BOLD + "    TARGET:" + Bcolors.ENDC)
         for enemy in enemies:
-            print("        " + str(i) + ".", enemy.name)
-            i += 1
+            if enemy.get_hp() != 0:
+                print("        " + str(i) + ".", enemy.name)
+                i += 1
         choice = int(input("    Choose target:")) - 1
         return choice
 
